@@ -9,7 +9,7 @@ class WECA {
 		this.canvas.width = 1000;
 		this.canvas.height = 1000;
 		this.cellWidth = 5;
-		this.cells = new Array(this.cellCount);
+		this.cells = [];
 		this.ruleset = [0, 0, 0, 1, 1, 1, 1, 0];
 		this.generation = 0;
 		this.generations = this.input.value;
