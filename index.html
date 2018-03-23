@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Wolfram Elementary Cellular Automaton</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+	<header>
+		<h1>Wolfram Elementary Cellular Automaton</h1>
+	</header>
+	<div class="inputs">
+		<label>
+			Generations
+			<input type="number" data-input value="50">
+		</label>
+		<label>
+			Ruleset
+			<select data-select>
+				<option value="0, 0, 0, 1, 1, 1, 1, 0">Rule 30 (0, 0, 0, 1, 1, 1, 1, 0)</option>
+				<option value="0, 0, 1, 1, 1, 1, 0, 0">Rule 60 (0, 0, 1, 1, 1, 1, 0, 0)</option>
+				<option value="0, 0, 1, 1, 1, 1, 1, 0">Rule 62 (0, 0, 1, 1, 1, 1, 1, 0)</option>
+				<option value="0, 1, 1, 1, 1, 1, 1, 0">Rule 126 (0, 1, 1, 1, 1, 1, 1, 0)</option>
+				<option value="1, 1, 0, 1, 1, 1, 0, 0">Rule 220 (1, 1, 0, 1, 1, 1, 0, 0)</option>
+				<option value="1, 1, 0, 1, 1, 1, 1, 0">Rule 222 (1, 1, 0, 1, 1, 1, 1, 0)</option>
+			</select>
+		</label>
+	</div>
+	<button type="button" data-button>Run</button>
+	<canvas width="1000" height="1000" data-canvas></canvas>
+	<script src="./assets/script.min.js"></script>
+	<script>
+		const weca = new WECA();
+		weca.cellWidth = 5;
+		weca.init();
+	</script>
+</body>
+</html>
