@@ -30,12 +30,12 @@ class WECA {
 	generate() {
 		let nextgen = new Array(this.cells.length);
 		
-		for (let i = 0; i <  this.canvas.width / this.cellWidth - 1; i++) {
+		for (let i = 0; i < this.canvas.width / this.cellWidth; i++) {
 			let left; // left neighbor state
 			let me; // current state
 			let right; // right neighbor state
 
-			if (i > 0){
+			if (i > 0) {
 				left = this.cells[i - 1];
 			} else {
 				left = 0;
@@ -43,7 +43,7 @@ class WECA {
 
 			me = this.cells[i];
 
-			if (i <  this.canvas.width / this.cellWidth - 1){
+			if (i <  this.canvas.width / this.cellWidth - 1) {
 				right = this.cells[i + 1];
 			} else {
 				right = 0;
