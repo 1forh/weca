@@ -8,13 +8,13 @@ class WECA {
 		this.context = this.canvas.getContext('2d');
 		this.canvas.width = 1000;
 		this.canvas.height = 1000;
-		this.cellWidth = 5;
+		this.cellWidth = 2;
 		this.cells = [];
 		this.ruleset = [0, 0, 0, 1, 1, 1, 1, 0];
 		this.generation = 0;
 		this.generations = this.input.value;
 	}
-	
+
 	computeGeneration(a, b, c) {
 		if (a === 1 && b === 1 && c === 1) return this.ruleset[0];
 		if (a === 1 && b === 1 && c === 0) return this.ruleset[1];
@@ -25,11 +25,11 @@ class WECA {
 		if (a === 0 && b === 0 && c === 1) return this.ruleset[6];
 		if (a === 0 && b === 0 && c === 0) return this.ruleset[7];
 	}
-	
+
 	// generate new cells and advance a generation
 	generate() {
 		let nextgen = new Array(this.cells.length);
-		
+
 		for (let i = 0; i < this.canvas.width / this.cellWidth; i++) {
 			let left; // left neighbor state
 			let me; // current state
@@ -55,7 +55,7 @@ class WECA {
 		this.cells = nextgen;
 		this.generation++;
 	}
-	
+
 	// draw a row based on current state of cells
 	drawRow() {
 		for (let i = 0; i < this.cells.length; i++) {
@@ -68,16 +68,16 @@ class WECA {
 		}
 	}
 
-	// clear state of canvas 
+	// clear state of canvas
 	clear() {
 		this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		this.generation = 0;
 	}
-	
+
 	// setup initial generation
 	setup() {
 		for (let i = 0; i <  this.canvas.width / this.cellWidth; i++) {
-			this.cells[i] = 0;	
+			this.cells[i] = 0;
 		}
 		this.cells[Math.round(this.cells.length / 2)] = 1; // set first `live` cell to be somewhere near center
 	}
@@ -88,10 +88,11 @@ class WECA {
 		this.setup();
 		this.drawRow();
 
-		while (this.generation < this.generations) {
+		setInterval(() => {
+			if (this.generation >= this.generations) return;
 			this.generate();
 			this.drawRow();
-		}
+		}, 20);
 	}
 
 	// event handler for controls/submit
@@ -108,7 +109,7 @@ class WECA {
 			this.draw();
 		})
 	}
-	
+
 	init() {
 		this.events();
 		this.draw();
