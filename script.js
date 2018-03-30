@@ -115,5 +115,3 @@ class WECA {
 		this.draw();
 	}
 }
-
-window.WECA = WECA;
